@@ -13,6 +13,7 @@ import { EditFormComponent } from './edit-form/edit-form.component';
 import { HeaderComponent } from './header/header.component'
 
 import { RestService } from './rest.service';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RestService } from './rest.service';
     MenuComponent,
     InsertFormComponent,
     EditFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,

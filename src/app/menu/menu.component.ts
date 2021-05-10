@@ -40,5 +40,5 @@ export class MenuComponent implements OnInit {
     await this.loadData();
   }
 
-  headers = ["name", "description", "price", "action"];
+  headers = ["name", "image", "description", "price", "action", "upload image"];
 }
