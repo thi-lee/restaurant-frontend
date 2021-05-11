@@ -14,7 +14,10 @@ export class RestService {
 
   httpHeader = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization"
     })
   }
 
@@ -42,7 +45,7 @@ export class RestService {
   }
 
   editData(dishId: any, update: {}) {
-    return this.http.post(`${this.endPoint}/editDish`, {"_id": dishId, update: update}).toPromise();
+    return this.http.post(`${this.endPoint}/editDish`, {"_id": dishId, update: update}, this.options).toPromise();
   }
 
   searchData(search: string) {
