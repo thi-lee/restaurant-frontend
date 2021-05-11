@@ -80,11 +80,11 @@
               <span class="sr-only">Previous</span>
             </a>
           </li>
-          <li *ngFor="let count of res" (click)=changepage()><a class="page-link" routerLink="/menu/{{count.total}}">{{count.total}}</a></li>
+          
+          <li *ngFor="let page of pages" (click)=changepage()>
+            <a class="page-link" routerLink="/menu/{{page}}">{{page}}</a>
+          </li>
 
-          <li class="page-item" (click)=changepage()><a class="page-link" routerLink="/menu/1">1</a></li>
-          <li class="page-item" (click)=changepage()><a class="page-link" routerLink="/menu/2">2</a></li>
-          <li class="page-item" (click)=changepage()><a class="page-link" routerLink="/menu/3">3</a></li>
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Next">
               <span aria-hidden="true">&raquo;</span>

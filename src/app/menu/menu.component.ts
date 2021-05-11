@@ -54,9 +54,21 @@ export class MenuComponent implements OnInit {
 
   }
 
-  res?: any[] = [];
+  pages : string[] = [];
   getCount() {
-    this.rs.getCount().then(resolve => this.res = resolve as any[]);
+    let resObj: any;
+    let total: any;
+    this.rs.getCount().then(resolve => resObj = resolve)
+    .then(() => {total = Number(resObj[0]["total"])})
+    .then(() => this.pagination(total))
+  }
+
+  pagination(total: number) {
+    let recordPerPage = 7;
+    let noOfPage = Math.ceil(total * (1 / recordPerPage));
+    for (let i = 1; i <= noOfPage; i++) {
+      this.pages.push(i.toString())
+    }
   }
 
   async startSearch(event: any, searchTerm: string) {
