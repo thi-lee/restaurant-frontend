@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { FnParam } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -29,11 +30,11 @@ export class RestService {
 
   getData(paramPage?: any) {
     // const params = new HttpParams().set('page', paramPage);
-    return this.http.get(`${this.endPoint}/getAll/${paramPage}`).toPromise();
+    return this.http.get(`${this.endPoint}/getAll/${paramPage}`, this.options).toPromise();
   }
 
   getCount() {
-    return this.http.get(`${this.endPoint}/getCount`).toPromise();
+    return this.http.get(`${this.endPoint}/getCount`, this.options).toPromise();
   }
 
   sendData(dish: {}) {
@@ -49,7 +50,7 @@ export class RestService {
   }
 
   searchData(search: string) {
-    const params = {search: search}
+    const params = {search: search};
     return this.http.get(`${this.endPoint}/searchDish`, {params}).toPromise();
   }
 
