@@ -1,7 +1,13 @@
 <div class="container">
     <br>
     <h3 style="text-align: center;">Menu</h3>
-    <button class="btn btn-primary" (click)="toInsertForm()">Add</button>
+    <div style="display: flex; justify-content: space-between;">
+      <button class="btn btn-primary" (click)="toInsertForm()">Add</button>
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" #search>
+        <button class="btn btn-success" (click)="startSearch($event, search.value)">Search</button>
+      </form>
+    </div>
     <br>
     <br>
 
@@ -27,7 +33,38 @@
                     Delete</button>
                 </td>
                 <td>
-                  <button class="btn btn-primary">Upload</button>
+                  <button type="button" class="btn btn-primary" (click)="onToggle($event, myModal)">
+                    Upload
+                  </button>
+
+                  <!-- The Modal -->
+                  <div class="modal" id="myModal" #myModal>
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <h4 class="modal-title">Modal Heading</h4>
+                          <button type="button" class="close" (click)="onDismiss($event, myModal)">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                          <h5>Upload new photo</h5>
+                          <form action="/profile" method="post" enctype="multipart/form-data">
+                            <input type="file" class="form-control-file" name="uploaded_file">
+                            <input type="submit" value="Upload" class="btn btn-primary" (click)="onUpload()"> 
+                          </form>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" (click)="onDismiss($event, myModal)">Close</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
                 </td>
             </tr>
         </tbody>
@@ -43,6 +80,8 @@
               <span class="sr-only">Previous</span>
             </a>
           </li>
+          <li *ngFor="let count of res" (click)=changepage()><a class="page-link" routerLink="/menu/{{count.total}}">{{count.total}}</a></li>
+
           <li class="page-item" (click)=changepage()><a class="page-link" routerLink="/menu/1">1</a></li>
           <li class="page-item" (click)=changepage()><a class="page-link" routerLink="/menu/2">2</a></li>
           <li class="page-item" (click)=changepage()><a class="page-link" routerLink="/menu/3">3</a></li>

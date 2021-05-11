@@ -17,6 +17,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
+    this.getCount();
   }
 
   loadData(toPrevious?: any) {
@@ -30,7 +31,6 @@ export class MenuComponent implements OnInit {
   }
 
   async changepage() {
-    console.log('hello')
     await this.loadData()
   }
 
@@ -38,6 +38,33 @@ export class MenuComponent implements OnInit {
     event.preventDefault();
     await this.rs.removeData(deleteId);
     await this.loadData();
+  }
+
+  onToggle(event: any, modal: any) {
+    event.preventDefault();
+    modal.style.display = "block";
+  }
+
+  onDismiss(event: any, modal: any) {
+    event.preventDefault();
+    modal.style.display = "none";
+  }
+
+  onUpload() {
+
+  }
+
+  res?: any[] = [];
+  getCount() {
+    this.rs.getCount().then(resolve => this.res = resolve as any[]);
+  }
+
+  async startSearch(event: any, searchTerm: string) {
+    this.loadData();
+    await this.rs.searchData(searchTerm)
+    .then(resolve => {
+      this.menu = resolve as any[] 
+    })
   }
 
   headers = ["name", "image", "description", "price", "action", "upload image"];

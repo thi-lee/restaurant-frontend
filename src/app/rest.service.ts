@@ -29,6 +29,10 @@ export class RestService {
     return this.http.get(`${this.endPoint}/getAll/${paramPage}`).toPromise();
   }
 
+  getCount() {
+    return this.http.get(`${this.endPoint}/getCount`).toPromise();
+  }
+
   sendData(dish: {}) {
     return this.http.post(`${this.endPoint}/insertDish`, dish, this.options).toPromise();
   }
@@ -41,9 +45,10 @@ export class RestService {
     return this.http.post(`${this.endPoint}/editDish`, {"_id": dishId, update: update}).toPromise();
   }
 
-  // searchData(search: string) {
-  //   return this.http.post(`${this.endPoint}/searchDish`, {search: search}).toPromise();
-  // }
+  searchData(search: string) {
+    const params = {search: search}
+    return this.http.get(`${this.endPoint}/searchDish`, {params}).toPromise();
+  }
 
   httpError(error: any) {
     let msg = '';

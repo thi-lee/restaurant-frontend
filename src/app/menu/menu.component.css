@@ -1,0 +1,10 @@
+@import "~font-awesome/css/font-awesome.css";
+
+html {
+    font-size: 10px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+*:before, *:after {
+    box-sizing: border-box;
+}

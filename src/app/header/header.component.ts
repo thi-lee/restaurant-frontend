@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service'
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,12 @@ import { RestService } from '../rest.service'
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private rs: RestService) { }
+  constructor(
+    private rs: RestService
+  ) { }
 
   ngOnInit(): void {
+    console.log()
   }
 
   navTabs = [
