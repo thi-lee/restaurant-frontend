@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
-import { FnParam } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +24,7 @@ export class RestService {
     headers: this.httpHeader
   }
 
-  endPoint = 'https://dara-restaurant-api.herokuapp.com';
+  endPoint = 'http://localhost:4201';
 
   getData(paramPage?: any) {
     // const params = new HttpParams().set('page', paramPage);

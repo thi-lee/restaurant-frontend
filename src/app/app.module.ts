@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component'
 
 import { RestService } from './rest.service';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     InsertFormComponent,
     EditFormComponent,
     HeaderComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

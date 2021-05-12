@@ -37,6 +37,7 @@ export class MenuComponent implements OnInit {
   async ondelete(event: any, deleteId: any) {
     event.preventDefault();
     await this.rs.removeData(deleteId);
+    await this.getCount();
     await this.loadData();
   }
 
@@ -64,6 +65,7 @@ export class MenuComponent implements OnInit {
   }
 
   pagination(total: number) {
+    this.pages = [];
     let recordPerPage = 7;
     let noOfPage = Math.ceil(total * (1 / recordPerPage));
     for (let i = 1; i <= noOfPage; i++) {

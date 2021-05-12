@@ -15,7 +15,7 @@ export class InsertFormComponent implements OnInit {
 
   onsubmit(event: any, name: string, description: string, price: string) {
     event.preventDefault();
-    var dish = {
+    let dish = {
       name: name,
       description: description,
       price: price
