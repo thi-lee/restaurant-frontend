@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SignUpComponent } from './sign-up/sign-up.component'
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { LogInComponent } from './log-in/log-in.component';
 
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { MenuComponent } from './menu/menu.component';
@@ -10,7 +11,8 @@ import { InsertFormComponent } from './insert-form/insert-form.component'
 import { FeedbackComponent } from './feedback/feedback.component';
 
 const routes: Routes = [
-  { path: 'sign-up', component: SignUpComponent },
+  { path: 'signup', component: SignUpComponent },
+  { path: 'login', component: LogInComponent },
 
   { path: 'menu/:page', component: MenuComponent },
   { path: 'menu/', redirectTo: 'menu/1', pathMatch: "full" },
