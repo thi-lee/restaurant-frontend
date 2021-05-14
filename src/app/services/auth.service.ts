@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RestService } from '../rest.service'
+import { HttpClient } from '@angular/common/http';
+import { RestService } from '../rest.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,25 +12,16 @@ export class AuthService {
     private rs: RestService
   ) { }
   
-  // httpHeader = this.rs.httpHeader;
-  // options : {} = {
-  //   headers: this.httpHeader
-  // }
-
-  httpHeader = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization"
-    })
-  }
-
+  httpHeader = this.rs.httpHeader;
   options : {} = {
     headers: this.httpHeader
   }
 
   endPoint = this.rs.endPoint;
+
+  usernameExist() {
+    return this.http.get(`${this.endPoint}/usernameExists`, this.options).toPromise();
+  }
 
   signup(user: any) {
     return this.http.post(`${this.endPoint}/signup`, user, this.options).toPromise();

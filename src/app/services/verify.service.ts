@@ -8,33 +8,51 @@ export class VerifyService {
   constructor() { }
 
   verifyPassword(password: string) {
-    let noti;
+    let notification;
+    let specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+    let lowercase = /[a-z]/;
+    let uppercase = /[A-Z]/;
+    let number = /[0-9]/;
+
     if (password == '') {
-      noti = 'Password cannot be empty';
+      notification = 'Password cannot be empty';
     } else if (password.length < 6) {
-      noti = 'Password is too short';
+      notification = 'Password is too short';
     } else if (password.length > 100) {
-      noti = 'Password is too long';
+      notification = 'Password is too long';
+    } else if (!password.match(specialChars)) {
+      notification = 'Password has to have at least one special character';
+    } else if (!password.match(lowercase)) {
+      notification = 'Password has to have at least one lowercase letter';
+    } else if (!password.match(uppercase)) {
+      notification = 'Password has to have at least one uppercase letter';
+    } else if (!password.match(number)) {
+      notification = 'Password has to have at least one number';
     } else {
-      noti = 'Password is valid';
+      notification = 'Password is valid';
     }
-    return noti;
+
+    return notification;
   }
 
   verifyUsername(username: string) {
-    let noti;
-    let specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?0-9]/;
+    let notification;
+    let specialChars = /[!@#$%^&*()_+=\[\]{};':"\\|,<>\/?]/;
+    let lowercase = /[a-z]/;
+
     if (username == '') {
-      noti = 'Username cannot be empty';
+      notification = 'Username cannot be empty';
     } else if (username.length < 6) {
-      noti = 'Username is too short';
+      notification = 'Username is too short';
     } else if (username.length > 100) {
-      noti = 'Username is too long';
+      notification = 'Username is too long';
     } else if (username.match(specialChars)) {
-      noti = 'Username cannot contain special characters and/or numbers'
+      notification = 'Username cannot contain special characters'
+    } else if (!username.match(lowercase)) {
+      notification = 'Username has to contain lowercase letter'
     } else {
-      noti = 'Username is valid';
+      notification = 'Username is valid';
     }
-    return noti;
+    return notification;
   }
 }

@@ -9,15 +9,8 @@ import { VerifyService } from '../services/verify.service'
 })
 export class SignUpComponent implements OnInit {
 
-  usernameErr = {
-    notification: "Please enter username",
-    result: true
-  };
-
-  passwordErr = {
-    notification: "Please enter password",
-    result: true
-  }
+  usernameErr = { notification: "Please enter username", result: true };
+  passwordErr = { notification: "Please enter password", result: true };
 
   constructor(
     private as : AuthService,
@@ -27,37 +20,27 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  signup(username: string, password: string, event?: any) {
+  async signup(username: string, password: string, event?: any) {
     event.preventDefault();
     let verifyUsername;
     let verifyPassword;
+    this.usernameErr = { notification: "Please enter username", result: true };
+    this.passwordErr = { notification: "Please enter password", result: true };
 
     verifyUsername = this.vs.verifyUsername(username);
     if (verifyUsername != 'Username is valid') {
-      this.usernameErr = {
-        notification: verifyUsername,
-        result: false
-      };
-      return false;
+      this.usernameErr = { notification: verifyUsername, result: false };
     } 
     
     else {
       verifyPassword = this.vs.verifyPassword(password);
       if (verifyPassword != 'Password is valid') {
-        this.passwordErr = {
-          notification: verifyPassword,
-          result: false
-        };
-        return false;
+        this.passwordErr = { notification: verifyPassword, result: false };
       } 
       
       else {
-          let user = {
-            username: username, 
-            password: password
-          }
-        // await this.as.signup(user)
-        return true;
+        let user = { username: username, password: password }
+        await this.as.signup(user);
       }
     }
   }
