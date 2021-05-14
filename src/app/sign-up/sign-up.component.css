@@ -1,0 +1,9 @@
+.err {
+    display: none;
+}
+
+.invalid {
+    display: block;
+    color: red;
+    font-style: italic;
+}
