@@ -12,7 +12,20 @@ export class AuthService {
     private rs: RestService
   ) { }
   
-  httpHeader = this.rs.httpHeader;
+  // httpHeader = this.rs.httpHeader;
+  // options : {} = {
+  //   headers: this.httpHeader
+  // }
+
+  httpHeader = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization"
+    })
+  }
+
   options : {} = {
     headers: this.httpHeader
   }
@@ -20,6 +33,10 @@ export class AuthService {
   endPoint = this.rs.endPoint;
 
   signup(user: any) {
-    return this.http.post(`${this.endPoint}/sign-up`, user, this.options).toPromise();
+    return this.http.post(`${this.endPoint}/signup`, user, this.options).toPromise();
+  }
+
+  login(user: any) {
+    return this.http.post(`${this.endPoint}/login`, user, this.options)
   }
 }
