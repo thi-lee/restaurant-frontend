@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { AuthService } from '../services/auth.service';
-import { VerifyService } from '../services/verify.service'
+import { VerifyService } from '../services/verify.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +16,8 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private as : AuthService,
-    private vs: VerifyService
+    private vs: VerifyService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -41,7 +44,11 @@ export class SignUpComponent implements OnInit {
       else {
         let user = { username: username, password: password }
         const sendToServer = await this.as.signup(user);
-        this.usernameErr = { notification: Object.values(sendToServer)[1], result: false};
+        if ( Object.values(sendToServer)[0] == '006') {
+          this.usernameErr = { notification: Object.values(sendToServer)[1], result: false};
+        } else {
+          this.router.navigate(['/menu']);
+        }
       }
     }
   }
