@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RestService } from '../rest.service';
+import { RestService } from '../services/rest.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +18,6 @@ export class AuthService {
   }
 
   endPoint = this.rs.endPoint;
-
-  usernameExist() {
-    return this.http.get(`${this.endPoint}/usernameExists`, this.options).toPromise();
-  }
 
   signup(user: any) {
     return this.http.post(`${this.endPoint}/signup`, user, this.options).toPromise();

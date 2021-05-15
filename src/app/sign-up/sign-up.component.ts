@@ -40,7 +40,8 @@ export class SignUpComponent implements OnInit {
       
       else {
         let user = { username: username, password: password }
-        await this.as.signup(user);
+        const sendToServer = await this.as.signup(user);
+        this.usernameErr = { notification: Object.values(sendToServer)[1], result: false};
       }
     }
   }

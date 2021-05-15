@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { RestService } from '../rest.service';
+import { RestService } from '../services/rest.service';
 
 @Component({
   selector: 'app-edit-form',
