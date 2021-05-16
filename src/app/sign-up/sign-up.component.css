@@ -7,3 +7,9 @@
     color: red;
     font-style: italic;
 }
+
+.valid {
+    display: block;
+    color: green;
+    font-style: italic;
+}

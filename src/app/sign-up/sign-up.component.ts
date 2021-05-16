@@ -13,6 +13,7 @@ export class SignUpComponent implements OnInit {
 
   usernameErr = { notification: "Please enter username", result: true };
   passwordErr = { notification: "Please enter password", result: true };
+  confirmErr = { notification: "", result: true};
 
   constructor(
     private as : AuthService,
@@ -45,11 +46,19 @@ export class SignUpComponent implements OnInit {
         let user = { username: username, password: password }
         const sendToServer = await this.as.signup(user);
         if ( Object.values(sendToServer)[0] == '006') {
-          this.usernameErr = { notification: Object.values(sendToServer)[1], result: false};
+          this.usernameErr = { notification: Object.values(sendToServer)[1], result: false };
         } else {
           this.router.navigate(['/menu']);
         }
       }
+    }
+  }
+
+  confirmPassword(password: any, confPassword: any) {
+    if (password != confPassword) {
+      this.confirmErr = { notification: "Password does not match", result: false };
+    } else {
+      this.confirmErr = { notification: "Password matched", result: true };
     }
   }
 }
