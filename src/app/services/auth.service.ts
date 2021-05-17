@@ -24,6 +24,6 @@ export class AuthService {
   }
 
   login(user: any) {
-    return this.http.post(`${this.endPoint}/login`, user, this.options)
+    return this.http.post(`${this.endPoint}/login`, user, this.options).toPromise();
   }
 }

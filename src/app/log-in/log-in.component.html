@@ -1,15 +1,21 @@
 <div class="container">
     <h1>Log In</h1>
-    <form action="http://localhost:4201/login" method="POST">
+    <form action="" method="POST">
         <div class="form-group">
             <label for="username">Username</label>
             <input class="form-control" name="username" type="text" #username/>
+            <span class="err" [class.invalid]="usernameErr.result == false">
+                {{usernameErr.notification}}
+            </span>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
             <input class="form-control" name="password" type="password" #password/>
+            <span class="err" [class.invalid]="passwordErr.result == false">
+                {{passwordErr.notification}}
+            </span>
         </div>
 
-        <input class="btn btn-primary" type="submit" value="Log In">
+        <button class="btn btn-primary" (click)="login(username.value, password.value, $event)">Log in</button>
     </form>
 </div>

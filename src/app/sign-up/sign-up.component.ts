@@ -13,7 +13,6 @@ export class SignUpComponent implements OnInit {
 
   usernameErr = { notification: "Please enter username", result: true };
   passwordErr = { notification: "Please enter password", result: true };
-  confirmErr = { notification: "", result: true};
 
   constructor(
     private as : AuthService,
@@ -54,11 +53,9 @@ export class SignUpComponent implements OnInit {
     }
   }
 
-  confirmPassword(password: any, confPassword: any) {
-    if (password != confPassword) {
-      this.confirmErr = { notification: "Password does not match", result: false };
-    } else {
-      this.confirmErr = { notification: "Password matched", result: true };
-    }
+  fieldTextType?: boolean;
+
+  confirmPassword() {
+    this.fieldTextType = !this.fieldTextType;
   }
 }
