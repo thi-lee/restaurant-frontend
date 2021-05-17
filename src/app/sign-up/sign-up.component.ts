@@ -23,6 +23,12 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isActive: boolean = false;
+
+  changeType() {
+    this.isActive = !this.isActive;
+  }
+
   async signup(username: string, password: string, event?: any) {
     event.preventDefault();
     let verifyUsername;
@@ -43,19 +49,13 @@ export class SignUpComponent implements OnInit {
       
       else {
         let user = { username: username, password: password }
-        const sendToServer = await this.as.signup(user);
-        if ( Object.values(sendToServer)[0] == '006') {
-          this.usernameErr = { notification: Object.values(sendToServer)[1], result: false };
+        const responseFromServer = await this.as.signup(user);
+        if ( Object.values(responseFromServer)[0] == '006') {
+          this.usernameErr = { notification: Object.values(responseFromServer)[1], result: false };
         } else {
-          this.router.navigate(['/menu']);
+          this.router.navigate(['/login']);
         }
       }
     }
-  }
-
-  fieldTextType?: boolean;
-
-  confirmPassword() {
-    this.fieldTextType = !this.fieldTextType;
   }
 }

@@ -43,8 +43,10 @@ export class LogInComponent implements OnInit {
       
       else {
         let user = { username: username, password: password }
-        await this.as.login(user)
-        .then(() => console.log('log in success'))
+        let responseFromServer = await this.as.login(user);
+        if ( Object.values(responseFromServer)[0] == '021') {
+          this.usernameErr = { notification: Object.values(responseFromServer)[1], result: false };
+        }
       }
     }
   }
