@@ -8,20 +8,23 @@
       </div>
 
       <div class="form-group">
-        <label for="name"><p>Dish name: {{editName}}</p></label>
-        <input type="text" class="form-control" name="name" #name
+        <label for="name">Edit Dish's Name:</label>
+        <input type="text" class="form-control" name="name" 
+        value="{{editName}}" #name
         (change)="changeName(name.value)">
       </div>
 
       <div class="form-group">
-        <label for="description"><p>Dish description: {{editDescription}}</p></label>
-        <input type="text" class="form-control" name="description" #description
+        <label for="description">Edit Dish's Description:</label>
+        <input type="text" class="form-control" name="description" 
+        value="{{editDescription}}" #description
         (change)="changeDescription(description.value)">
       </div>
 
       <div class="form-group">
-        <label for="price"><p>Dish price: {{editPrice}}</p></label>
-        <input type="number" class="form-control" name="price" #price
+        <label for="price">Edit Dish's Price</label>
+        <input type="number" class="form-control" name="price"
+        value="{{editPrice}}" #price
         (change)="changePrice(price.value)">
       </div>
       <button type="submit" class="btn btn-primary" (click)="onUpdate($event)">Submit</button>

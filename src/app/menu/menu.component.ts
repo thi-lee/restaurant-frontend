@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
     this.getCount();
   }
 
-  loadData(toPrevious?: any) {
+  loadData() {
     let paramPage = this.activatedRoute.snapshot.params.page;
     this.rs.getData(paramPage)
     .then((resolve) => { this.menu = resolve as any[]; })
@@ -34,11 +34,19 @@ export class MenuComponent implements OnInit {
     await this.loadData()
   }
 
-  async ondelete(event: any, deleteId: any) {
+  confirmDelete() {
+    return confirm("Are you sure you want to delete this item?");
+  }
+
+  ondelete(event: any, deleteId: any) {
     event.preventDefault();
-    await this.rs.removeData(deleteId);
-    await this.getCount();
-    await this.loadData();
+    if (this.confirmDelete()) {
+      this.rs.removeData(deleteId)
+      .then(() => {
+        this.getCount();
+        this.loadData();
+      });
+    }
   }
 
   onToggle(event: any, modal: any) {

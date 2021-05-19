@@ -13,7 +13,6 @@ import { EditFormComponent } from './edit-form/edit-form.component';
 import { HeaderComponent } from './header/header.component'
 
 import { RestService } from '../app/services/rest.service';
-import { FeedbackComponent } from './feedback/feedback.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInComponent } from './log-in/log-in.component';
 
@@ -24,7 +23,6 @@ import { LogInComponent } from './log-in/log-in.component';
     InsertFormComponent,
     EditFormComponent,
     HeaderComponent,
-    FeedbackComponent,
     SignUpComponent,
     LogInComponent
   ],

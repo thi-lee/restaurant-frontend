@@ -7,8 +7,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { MenuComponent } from './menu/menu.component';
 
-import { InsertFormComponent } from './insert-form/insert-form.component'
-import { FeedbackComponent } from './feedback/feedback.component';
+import { InsertFormComponent } from './insert-form/insert-form.component';
 
 const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
@@ -18,7 +17,6 @@ const routes: Routes = [
   { path: 'menu/', redirectTo: 'menu/1', pathMatch: "full" },
   { path: 'menu', redirectTo: 'menu/1', pathMatch: "full" },
 
-  { path: 'feedback/:page', component: FeedbackComponent},
   { path: 'feedback/', redirectTo: 'feedback/1', pathMatch: "full" },
   { path: 'feedback', redirectTo: 'feedback/1', pathMatch: "full" },
   

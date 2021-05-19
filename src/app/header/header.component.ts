@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RestService } from '../services/rest.service';
-import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-header',
@@ -9,19 +7,16 @@ import { ActivatedRoute } from '@angular/router'
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(
-    private rs: RestService
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
     console.log()
   }
 
   navTabs = [
-    { name: "home", link: "/" },
-    { name: "menu", link: "/menu" },
-    { name: "feedback", link: "/feedback" },
-    { name: "contact", link: "/contact" }
+    { name: "sign up", link: "/signup"},
+    { name: "log in", link: "/login"},
+    { name: "menu", link: "/menu" }
   ];
 
   selectedTab: any;
@@ -29,8 +24,4 @@ export class HeaderComponent implements OnInit {
   select(item: any) {
     this.selectedTab = item;
   }
-
-  // onsearch(event: any, search: any) {
-  //   this.rs.searchData.then((resolve) => { console.log(resolve)});
-  // }
 }
