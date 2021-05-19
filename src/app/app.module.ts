@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component'
 import { RestService } from '../app/services/rest.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [

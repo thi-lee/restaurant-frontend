@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RestService } from '../services/rest.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,8 @@ export class AuthService {
     private http: HttpClient,
     private rs: RestService
   ) { }
-  
-  httpHeader = this.rs.httpHeader;
-  options : {} = {
-    headers: this.httpHeader
-  }
+
+  options = this.rs.options;
 
   endPoint = this.rs.endPoint;
 
@@ -25,5 +23,9 @@ export class AuthService {
 
   login(user: any) {
     return this.http.post(`${this.endPoint}/login`, user, this.options).toPromise();
+  }
+
+  saveToken() {
+    
   }
 }

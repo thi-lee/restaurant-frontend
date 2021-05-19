@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
 import { VerifyService } from '../services/verify.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-log-in',
@@ -16,12 +17,15 @@ export class LogInComponent implements OnInit {
 
   constructor(
     private as: AuthService,
-    private vs: VerifyService,
-    private router: Router
+    private vs: VerifyService
   ) { }
 
   ngOnInit(): void {
   }
+
+  // setCookie(token: string, expires: {}) {
+  //   this.cookie.set('jwt', token, expires);
+  // }
 
   async login(username: string, password: string, event?: any) {
     event.preventDefault();
@@ -44,6 +48,7 @@ export class LogInComponent implements OnInit {
       else {
         let user = { username: username, password: password }
         let responseFromServer = await this.as.login(user);
+        console.log(responseFromServer)
         if ( Object.values(responseFromServer)[0] == '021') {
           this.usernameErr = { notification: Object.values(responseFromServer)[1], result: false };
         }
