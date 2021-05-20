@@ -17,15 +17,13 @@ export class LogInComponent implements OnInit {
 
   constructor(
     private as: AuthService,
-    private vs: VerifyService
+    private vs: VerifyService,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit(): void {
+    
   }
-
-  // setCookie(token: string, expires: {}) {
-  //   this.cookie.set('jwt', token, expires);
-  // }
 
   async login(username: string, password: string, event?: any) {
     event.preventDefault();
@@ -48,9 +46,13 @@ export class LogInComponent implements OnInit {
       else {
         let user = { username: username, password: password }
         let responseFromServer = await this.as.login(user);
-        console.log(responseFromServer)
-        if ( Object.values(responseFromServer)[0] == '021') {
+        if ( Object.values(responseFromServer)[0] == '021' ) {
           this.usernameErr = { notification: Object.values(responseFromServer)[1], result: false };
+        } else if ( Object.values(responseFromServer)[0] == '022' ) {
+          this.passwordErr = { notification: Object.values(responseFromServer)[1], result: false };
+        } else if ( Object.values(responseFromServer)[0] == '020' ) {
+          this.cookieService.set('jwt', Object.values(responseFromServer)[1], (1/24/60) * 20);
+          console.log(document.cookie.split('=')[1])
         }
       }
     }

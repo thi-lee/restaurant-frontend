@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +11,48 @@ export class RestService {
     private http: HttpClient
     ) { }
 
-  httpHeader = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization"
-    })
-  }
+  // httpHeader = {
+  //   headers: new HttpHeaders({
+  //     "Content-Type": "application/json",
+  //     "Access-Control-Allow-Origin": "*",
+  //     "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST, PUT",
+  //     "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization",
+  //     "Cookie": document.cookie.split('=')[1],
+  //     "Thi": "1"
+  //   })
+  // }
+
+  // checkCookieExists() {
+  //   let cookieHeader;
+    
+  //   if (cookieExists) {
+  //     cookieHeader = document.cookie.split('=')[1];
+  //   }
+  //   return cookieHeader;
+  // }
+
+  httpHeaders = new Headers({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST, PUT",
+    "Access-Control-Allow-Headers": "access-control-allow-origin, access-control-allow-methods, Origin, Content-Type, Accept, Authorization, withcredentials",
+    "withCredentials": "true",
+  })
 
   options : {} = {
-    headers: this.httpHeader
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST, PUT",
+      "Access-Control-Allow-Headers": "*",
+      "withCredentials": "true",
+      "token": `jwt=${document.cookie.split('=')[1]}`
+    }
   }
 
   endPoint = 'https://dara-restaurant-api.herokuapp.com';
 
   getData(paramPage?: any) {
-    // const params = new HttpParams().set('page', paramPage);
     return this.http.get(`${this.endPoint}/getAll/${paramPage}`, this.options).toPromise();
   }
 
