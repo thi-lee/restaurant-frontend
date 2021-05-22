@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
-import { AuthService } from '../services/auth.service';
-import { VerifyService } from '../services/verify.service';
+import { AuthService } from '../_services/auth.service';
+import { VerifyService } from '../_services/verify.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -17,8 +16,7 @@ export class LogInComponent implements OnInit {
 
   constructor(
     private as: AuthService,
-    private vs: VerifyService,
-    private cookieService: CookieService
+    private vs: VerifyService
   ) { }
 
   ngOnInit(): void {
@@ -51,8 +49,9 @@ export class LogInComponent implements OnInit {
         } else if ( Object.values(responseFromServer)[0] == '022' ) {
           this.passwordErr = { notification: Object.values(responseFromServer)[1], result: false };
         } else if ( Object.values(responseFromServer)[0] == '020' ) {
-          this.cookieService.set('jwt', Object.values(responseFromServer)[1], (1/24/60) * 20);
-          console.log(document.cookie.split('=')[1])
+          localStorage.setItem("idToken", Object.values(responseFromServer)[1]);
+          // this.cookieService.set('jwt', Object.values(responseFromServer)[1], (1/24/60) * 20);
+          // console.log(document.cookie.split('=')[1])
         }
       }
     }

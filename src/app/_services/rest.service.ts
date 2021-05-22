@@ -11,34 +11,6 @@ export class RestService {
     private http: HttpClient
     ) { }
 
-  // httpHeader = {
-  //   headers: new HttpHeaders({
-  //     "Content-Type": "application/json",
-  //     "Access-Control-Allow-Origin": "*",
-  //     "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST, PUT",
-  //     "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization",
-  //     "Cookie": document.cookie.split('=')[1],
-  //     "Thi": "1"
-  //   })
-  // }
-
-  // checkCookieExists() {
-  //   let cookieHeader;
-    
-  //   if (cookieExists) {
-  //     cookieHeader = document.cookie.split('=')[1];
-  //   }
-  //   return cookieHeader;
-  // }
-
-  httpHeaders = new Headers({
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST, PUT",
-    "Access-Control-Allow-Headers": "access-control-allow-origin, access-control-allow-methods, Origin, Content-Type, Accept, Authorization, withcredentials",
-    "withCredentials": "true",
-  })
-
   options : {} = {
     headers: {
       "Content-Type": "application/json",
@@ -50,7 +22,7 @@ export class RestService {
     }
   }
 
-  endPoint = 'https://dara-restaurant-api.herokuapp.com';
+  endPoint = 'https://dara-restaurant-api.herokuapp.com/';
 
   getData(paramPage?: any) {
     return this.http.get(`${this.endPoint}/getAll/${paramPage}`, this.options).toPromise();
