@@ -22,7 +22,7 @@ export class RestService {
     }
   }
 
-  endPoint = 'https://dara-restaurant-api.herokuapp.com/';
+  endPoint = 'https://dara-restaurant-api.herokuapp.com';
 
   getData(paramPage?: any) {
     return this.http.get(`${this.endPoint}/getAll/${paramPage}`, this.options).toPromise();
