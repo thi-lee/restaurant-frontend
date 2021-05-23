@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -16,6 +16,7 @@ import { RestService } from '../app/_services/rest.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { LoginGuard } from './_auth/login.guard';
+import { TokenInterceptorService } from './_services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,12 @@ import { LoginGuard } from './_auth/login.guard';
   ],
   providers: [
     LoginGuard,
-    RestService
+    RestService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

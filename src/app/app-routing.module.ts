@@ -15,7 +15,9 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LogInComponent },
 
-  { path: 'menu/:page', component: MenuComponent, canActivate: [LoginGuard] },
+  { path: 'menu/:page', component: MenuComponent, 
+  canActivate: [LoginGuard] 
+},
   { path: 'menu/', redirectTo: 'menu/1', pathMatch: "full" },
   { path: 'menu', redirectTo: 'menu/1', pathMatch: "full" },
 

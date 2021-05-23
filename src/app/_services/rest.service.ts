@@ -21,7 +21,7 @@ export class RestService {
     }
   }
 
-  endPoint = 'http://localhost:4201';
+  endPoint = 'https://dara-restaurant-api.herokuapp.com';
 
   getData(paramPage?: any) {
     return this.http.get(`${this.endPoint}/getAll/${paramPage}`, this.options).toPromise();

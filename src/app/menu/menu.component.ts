@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../_services/rest.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-menu',
@@ -10,7 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class MenuComponent implements OnInit {
   constructor( 
     private rs : RestService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {  }
 
   menu : any[] = [];
@@ -24,7 +26,16 @@ export class MenuComponent implements OnInit {
   loadData() {
     let paramPage = this.activatedRoute.snapshot.params.page;
     this.rs.getData(paramPage)
-    .then((resolve) => { this.menu = resolve as any[]; })
+    .then(
+      (resolve) => { this.menu = resolve as any[]; },
+      (err) => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 401) {
+            this.router.navigate(['/login'])
+          }
+        }
+      }
+    )
   }
 
   toInsertForm() {
