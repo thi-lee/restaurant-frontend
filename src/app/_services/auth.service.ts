@@ -27,4 +27,8 @@ export class AuthService {
   saveToken() {
     
   }
+
+  loggedIn() {
+    return !!localStorage.getItem("idToken");
+  }
 }

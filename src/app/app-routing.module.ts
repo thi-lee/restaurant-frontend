@@ -9,11 +9,13 @@ import { MenuComponent } from './menu/menu.component';
 
 import { InsertFormComponent } from './insert-form/insert-form.component';
 
+import { LoginGuard } from './_auth/login.guard';
+
 const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LogInComponent },
 
-  { path: 'menu/:page', component: MenuComponent },
+  { path: 'menu/:page', component: MenuComponent, canActivate: [LoginGuard] },
   { path: 'menu/', redirectTo: 'menu/1', pathMatch: "full" },
   { path: 'menu', redirectTo: 'menu/1', pathMatch: "full" },
 

@@ -17,12 +17,11 @@ export class RestService {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST, PUT",
       "Access-Control-Allow-Headers": "*",
-      "withCredentials": "true",
-      "token": `jwt=${document.cookie.split('=')[1]}`
+      "withCredentials": "true"
     }
   }
 
-  endPoint = 'https://dara-restaurant-api.herokuapp.com';
+  endPoint = 'http://localhost:4201';
 
   getData(paramPage?: any) {
     return this.http.get(`${this.endPoint}/getAll/${paramPage}`, this.options).toPromise();

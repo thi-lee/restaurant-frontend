@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component'
 import { RestService } from '../app/_services/rest.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { LoginGuard } from './_auth/login.guard';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { LogInComponent } from './log-in/log-in.component';
     ReactiveFormsModule
   ],
   providers: [
+    LoginGuard,
     RestService
   ],
   bootstrap: [AppComponent]
