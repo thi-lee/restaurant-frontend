@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,21 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
-    console.log()
   }
 
-  navTabs = [
-    { name: "sign up", link: "/signup"},
-    { name: "log in", link: "/login"},
-    { name: "menu", link: "/menu" }
-  ];
+  loggedIn() {
+    return this.authService.loggedIn();
+  }
 
-  selectedTab: any;
-
-  select(item: any) {
-    this.selectedTab = item;
+  logOut() {
+    return this.authService.logOut();
   }
 }
