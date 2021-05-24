@@ -1,31 +1,46 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { LogInComponent } from './log-in/log-in.component';
-
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { MenuComponent } from './menu/menu.component';
-
 import { InsertFormComponent } from './insert-form/insert-form.component';
 
-import { LoginGuard } from './_auth/login.guard';
+import { AuthGuard } from './_auth/auth.guard';
 
 const routes: Routes = [
-  { path: 'signup', component: SignUpComponent },
-  { path: 'login', component: LogInComponent },
-
-  { path: 'menu/:page', component: MenuComponent, 
-  canActivate: [LoginGuard] 
-},
-  { path: 'menu/', redirectTo: 'menu/1', pathMatch: "full" },
-  { path: 'menu', redirectTo: 'menu/1', pathMatch: "full" },
-
-  { path: 'feedback/', redirectTo: 'feedback/1', pathMatch: "full" },
-  { path: 'feedback', redirectTo: 'feedback/1', pathMatch: "full" },
+  { 
+    path: 'signup', 
+    component: LogInComponent 
+  },
+  { 
+    path: 'login', 
+    component: LogInComponent
+  },
+  { 
+    path: 'menu/:page', 
+    component: MenuComponent, 
+    canActivate: [AuthGuard] 
+  },
+  { 
+    path: 'menu/', 
+    redirectTo: 'menu/1', 
+    pathMatch: "full" 
+  },
+  { 
+    path: 'menu', 
+    redirectTo: 'menu/1', 
+    pathMatch: "full" 
+  },
   
-  { path: 'insert-form', component: InsertFormComponent },
-  { path: 'edit-form/:editId', component: EditFormComponent }
+  { 
+    path: 'insert-form', 
+    component: InsertFormComponent 
+  },
+  { 
+    path: 'edit-form/:editId', 
+    component: EditFormComponent 
+  }
 ];
 
 @NgModule({

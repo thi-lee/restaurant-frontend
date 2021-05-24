@@ -8,7 +8,9 @@ import { RestService } from '../_services/rest.service';
 })
 export class InsertFormComponent implements OnInit {
 
-  constructor(private rs : RestService) { }
+  constructor(
+    private rs : RestService
+  ) { }
 
   ngOnInit(): void {
   }

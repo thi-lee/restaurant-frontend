@@ -7,15 +7,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { LogInComponent } from './log-in/log-in.component';
 import { MenuComponent } from './menu/menu.component';
 import { InsertFormComponent } from './insert-form/insert-form.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { HeaderComponent } from './header/header.component'
 
 import { RestService } from '../app/_services/rest.service';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { LogInComponent } from './log-in/log-in.component';
-import { LoginGuard } from './_auth/login.guard';
+import { AuthGuard } from './_auth/auth.guard';
 import { TokenInterceptorService } from './_services/token-interceptor.service';
 
 @NgModule({
@@ -25,7 +24,6 @@ import { TokenInterceptorService } from './_services/token-interceptor.service';
     InsertFormComponent,
     EditFormComponent,
     HeaderComponent,
-    SignUpComponent,
     LogInComponent
   ],
   imports: [
@@ -37,7 +35,7 @@ import { TokenInterceptorService } from './_services/token-interceptor.service';
     ReactiveFormsModule
   ],
   providers: [
-    LoginGuard,
+    AuthGuard,
     RestService,
     {
       provide: HTTP_INTERCEPTORS,
