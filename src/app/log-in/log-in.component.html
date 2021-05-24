@@ -1,21 +1,32 @@
-<div class="container">
-    <h1>Log In</h1>
-    <form action="" method="POST">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input class="form-control" name="username" type="text" #username/>
-            <span class="err" [class.invalid]="usernameErr.result == false">
-                {{usernameErr.notification}}
-            </span>
+<div class="bg">
+    <div class="card col d-flex justify-content-center">
+        <div class="card-top">
+            <div class="container top"><h1>Log In</h1></div>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input class="form-control" name="password" type="password" #password/>
-            <span class="err" [class.invalid]="passwordErr.result == false">
-                {{passwordErr.notification}}
-            </span>
+        <div class="card-body">
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input class="form-control" name="username" type="text" #username/>
+                    <span class="err" [class.invalid]="usernameErr.result == false">
+                        {{usernameErr.notification}}
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input class="form-control" name="password" 
+                    type="{{ isActive ? 'text' : 'password' }}" #password/>
+                    <input type="checkbox" (click)="changeType()" /> Show password
+                    <span class="err" [class.invalid]="passwordErr.result == false">
+                        {{passwordErr.notification}}
+                    </span>
+                </div>
+    
+                <div class="d-flex flex-column">
+                    <button class="btn btn-primary" (click)="login(username.value, password.value, $event)">Log in</button>
+                    <span style="margin-top: 5px">Don't have an account? Please <a routerLink="/signup">sign up</a></span>
+                </div>
+            </form>
         </div>
-
-        <button class="btn btn-primary" (click)="login(username.value, password.value, $event)">Log in</button>
-    </form>
+    </div>
 </div>

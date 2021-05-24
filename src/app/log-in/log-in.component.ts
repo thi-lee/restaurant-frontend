@@ -25,6 +25,13 @@ export class LogInComponent implements OnInit {
     
   }
 
+  isActive: boolean = false;
+
+  changeType() {
+    this.isActive = !this.isActive;
+  }
+
+
   async login(username: string, password: string, event?: any) {
     event.preventDefault();
     let verifyUsername;

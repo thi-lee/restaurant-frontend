@@ -1,0 +1,7 @@
+body, html {
+    height: 100vh;
+}
+
+router-outlet {
+    height: 100vh;
+}

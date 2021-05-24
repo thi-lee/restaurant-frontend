@@ -68,6 +68,8 @@ Below is a code snippet:
 
 ### Continued development
 
+Error handling was missing in this project, and that will be my next step. 
+
 Angular is a powerful tool if I make use of it, so I'll make it a goal to continue with Angular. I'm thinking particularly of Angular Forms, but I bet there will be interesting topics waiting for me on this journey. 
 
 ### Useful resources
@@ -84,4 +86,4 @@ Angular is a powerful tool if I make use of it, so I'll make it a goal to contin
 
 ## Acknowledgments
 
-This is where I'd show appreciation towards my seniors at [Fundiin](https://fundiin.vn/). I was on my own trying to understand random pieces of web development, and if it wasn't for them, I would not have been working on one function of the project to the next. I would not have been ready to spend many days on one site. I would have given up, if it's not them who keep me accountable and who guided me along the way. 
+This is where I'd show appreciation towards my seniors at [Fundiin](https://fundiin.vn/). I was on my own trying to understand random pieces of web development, and if it wasn't for them, I would not have been working on one function of the project to the next. I would not have been ready to spend many days on one site. I would have given up, if it's not them who kept me accountable and who guided me along the way. 
