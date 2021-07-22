@@ -15,7 +15,8 @@ export class LogInComponent implements OnInit {
   constructor(
     private as: AuthService,
     private vs: VerifyService,
-    private _router: Router
+    private _router: Router,
+    private cookieService: CookieService
   ) { }
 
   ngOnInit(): void {
@@ -95,9 +96,9 @@ export class LogInComponent implements OnInit {
         } else if ( Object.values(responseFromServer)[0] == '022' ) {
           this.passwordErr = { notification: Object.values(responseFromServer)[1], result: false };
         } else if ( Object.values(responseFromServer)[0] == '020' ) {
-          localStorage.setItem("idToken", Object.values(responseFromServer)[1]);
+          this.cookieService.set('jwt', Object.values(responseFromServer)[1], (1/24/60) * 20);
+          // localStorage.setItem("idToken", Object.values(responseFromServer)[1]);
           this._router.navigate(['/menu']);
-          // this.cookieService.set('jwt', Object.values(responseFromServer)[1], (1/24/60) * 20);
         }
       }
     }

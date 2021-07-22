@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
 
 @Injectable({
@@ -21,7 +21,7 @@ export class RestService {
     }
   }
 
-  endPoint = 'https://dara-restaurant-api.herokuapp.com';
+  endPoint = 'http://localhost:4201';
 
   getData(paramPage?: any) {
     return this.http.get(`${this.endPoint}/getAll/${paramPage}`, this.options).toPromise();

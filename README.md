@@ -28,7 +28,7 @@ I started with questions. *What are CRUD operations?* *What are HTTP methods?* *
 
 ### Links
 
-- Live Site URL: [Dara Restaurant Page](https://dara-restaurant.netlify.app/)
+- Live Site URL: [Dara Restaurant Page](https://dara-restaurant.netlify.app/signup)
 
 ## My process
 

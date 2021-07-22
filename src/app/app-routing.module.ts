@@ -25,21 +25,22 @@ const routes: Routes = [
   { 
     path: 'menu/', 
     redirectTo: 'menu/1', 
-    pathMatch: "full" 
+    pathMatch: "full"
   },
   { 
     path: 'menu', 
     redirectTo: 'menu/1', 
-    pathMatch: "full" 
+    pathMatch: "full"
   },
-  
   { 
     path: 'insert-form', 
-    component: InsertFormComponent 
+    component: InsertFormComponent, 
+    canActivate: [AuthGuard]
   },
   { 
     path: 'edit-form/:editId', 
-    component: EditFormComponent 
+    component: EditFormComponent, 
+    canActivate: [AuthGuard]
   }
 ];
 

@@ -18,7 +18,6 @@ export class MenuComponent implements OnInit {
   menu : any[] = [];
 
   ngOnInit(): void {
-    const cookie = document.cookie.split("=")[1];
     this.loadData();
     this.getCount();
   }
